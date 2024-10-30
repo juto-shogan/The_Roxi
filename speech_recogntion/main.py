@@ -48,8 +48,8 @@ def run_bash_script(bash_script):
 
 bash_script = """
 cd /home/juto/Desktop/projects/The_Roxi
-
 git add .
 git commit -m "subprocess added"
+git push
 """
 run_bash_script(bash_script)
