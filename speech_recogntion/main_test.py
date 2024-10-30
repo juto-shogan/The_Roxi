@@ -5,7 +5,12 @@ import subprocess
 def run_bash_command(command):
     """Runs a bash command and returns the output."""
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
-    return result.stdout
+    # return result.stdout
+    
+    if result.returncode == 0:
+        print(result.stdout)
+    else:
+        print(result.stderr)
 
 
 # Define trigger phrases (case-insensitive)

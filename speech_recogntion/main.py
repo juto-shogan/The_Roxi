@@ -1,6 +1,6 @@
-from narwhals import Duration
-import speech_recognition as sr
-import pyttsx3
+# from narwhals import Duration
+# import speech_recognition as sr
+# import pyttsx3
 import subprocess
 
 # # Create a Recognizer instance
@@ -30,19 +30,16 @@ def run_bash_script(bash_script):
     Args:
         bash_script (str): The Bash script to run.
     """
-
+    
     try:
-        result = subprocess.run(
-            ["bash", "-c", bash_script],
-            capture_output=True,
-            text=True
-        )
+        result = subprocess.run(["bash", "-c", bash_script], capture_output=True, text=True)
         if result.returncode == 0:
             print(result.stdout)
         else:
             print(result.stderr)
     except subprocess.CalledProcessError as e:
         print(f"Error running Bash script: {e}")
+
 
 # practice script execution
 bash_script = """
