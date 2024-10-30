@@ -1,6 +1,7 @@
-# from narwhals import Duration
-# import speech_recognition as sr
-# import pyttsx3
+from narwhals import Duration
+import speech_recognition as sr
+import pyttsx3
+import subprocess
 
 # # Create a Recognizer instance
 # r = sr.Recognizer()
@@ -23,9 +24,6 @@
     
 
 
-
-import subprocess
-
 def run_bash_script(bash_script):
     """Runs a Bash script within the Python script.
 
@@ -46,10 +44,11 @@ def run_bash_script(bash_script):
     except subprocess.CalledProcessError as e:
         print(f"Error running Bash script: {e}")
 
+# practice script execution
 bash_script = """
 cd /home/juto/Desktop/projects/The_Roxi
 git add .
 git commit -m "subprocess added"
-git push
+git status
 """
 run_bash_script(bash_script)

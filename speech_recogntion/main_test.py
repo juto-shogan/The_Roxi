@@ -1,5 +1,7 @@
 import speech_recognition as sr
 import subprocess
+
+
 def run_bash_command(command):
     """Runs a bash command and returns the output."""
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
