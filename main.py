@@ -41,13 +41,11 @@ class The_Roxi:
 
 ######################################
     def greet(self):
-        """
-        Returns a hacker-style greeting.
-        """
         return f"Me says, {random.choice(self.greetings)}"
     
-    def tool_verifier(self): 
-        return 'there'
+    def tool_verifier(self, user_input): 
+        tool = subprocess.run(['bash', user_input +'--version'], capture_output=True, text=True)
+        return tool.stdout
         
 
 
@@ -66,6 +64,9 @@ class The_Roxi:
         
         # basic port scanning
         scans = ['scan', 'scanning', ' port recon', 'recon', 'reconissence'] 
+        
+        # for checking or verifing if tool is here
+        verify = ['is this tool here', 'do you have this']
         
         if any(keyword in user_input.lower() for keyword in keywords):
             # 2. Generate a response based on the keywords and context.
@@ -94,7 +95,7 @@ class The_Roxi:
             
         
         elif any(word in user_input.lower() for word in scans):
-            return 
+            return tool
         
         ###################################################
         
