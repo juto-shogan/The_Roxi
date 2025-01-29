@@ -1,9 +1,0 @@
-TODO
-- Base full structure of main.py
-- Getting huggingface model
-- Gather data 
-- 
-
-DONE 
-- Get pytorch
--

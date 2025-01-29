@@ -1,3 +1,3 @@
 #!/bin/bash
 
-nmap -p 8.8.8.8
+nmap -p 53 8.8.8.8
