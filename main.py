@@ -1,5 +1,6 @@
 import random
 import subprocess
+from getpass import getpass
 
 """
 To do list
@@ -10,7 +11,17 @@ To do list
 Done List
 - Basic trigger word
 - subprocess integration
+- Tool verfier 
 
+Cyber Kill Chain
+- Reconnaissance
+- intrusion
+- Exploration
+- Privilege escalation
+- lateral movement
+- obfuscation/ Anti-forensics
+- Denial of service
+- Exfiltration
 """
 
 class The_Roxi:
@@ -85,24 +96,55 @@ class The_Roxi:
         
         ####################################################
         # practice for really port scan simulations
-        elif "run nmap script" in user_input.lower():
-            result = subprocess.run(['bash', 'nmap.sh'], capture_output=True, text=True)
-            return result.stdout
+        # elif "run nmap script" in user_input.lower():
+        #     result = subprocess.run(['bash', 'nmap.sh'], capture_output=True, text=True)
+        #     return result.stdout
         
-        elif any(word in user_input.lower() for word in scans):
-            result = subprocess.run(['nmap', '-p', '80', 'localhost'], capture_output=True, text=True)
-            return result.stdout
+        # elif any(word in user_input.lower() for word in scans):
+        #     result = subprocess.run(['nmap', '-p', '80', 'localhost'], capture_output=True, text=True)
+        #     return result.stdout
             
-        
-        elif any(word in user_input.lower() for word in scans):
-            return tool
-        
         ###################################################
-        
         
         else:
             # 3. Provide a witty or sarcastic response to general input.
             return "I'm listening..."
+
+
+
+
+class ToolVerifier:
+    def __init__(self, tool_name):
+        self.tool_name = tool_name
+
+    def is_tool_installed(self):
+        try:
+            subprocess.run([self.tool_name, '--version'], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            return True
+        except subprocess.CalledProcessError:
+            return False
+        except FileNotFoundError:
+            return False
+
+    def install_tool(self):
+        try:
+            password = getpass("Enter your sudo password: ")
+            command = f'echo {password} | sudo -S apt-get install -y {self.tool_name}'
+            subprocess.run(command, shell=True, check=True)
+            print(f"{self.tool_name} has been installed.")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to install {self.tool_name}. Error: {e}")
+
+    def verifier(self):
+        if self.is_tool_installed():
+            print(f"{self.tool_name} is installed.")
+        else:
+            print(f"{self.tool_name} is not installed.")
+            install = input(f"Do you want to install {self.tool_name}? (yes/no): ").strip().lower()
+            if install == 'yes':
+                self.install_tool()
+            else:
+                print(f"{self.tool_name} will not be installed.")
 
 
 #########################################
@@ -115,3 +157,8 @@ if __name__ == "__main__":
         if user_input.lower() == "exit" or "close":
             break
         print(test.name + ">", test.respond(user_input))
+        
+# Usage
+tool_name = 'steghide'
+verifier = ToolVerifier(tool_name)
+verifier.verifier()
