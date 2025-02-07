@@ -1,3 +1,5 @@
+import os 
+import platform
 import random
 import subprocess
 from getpass import getpass
@@ -11,8 +13,7 @@ To do list
 
 Done List
 - Basic trigger word
-- subprocess integration
-- Tool verfier 
+- subprocess verfier 
 
 Cyber Kill Chain
 - Reconnaissance
@@ -37,6 +38,7 @@ class ToolVerifier:
         self.tool_name = tool_name
 
     def is_tool_installed(self):
+        
         try:
             subprocess.run([self.tool_name, '--version'], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             return True
@@ -47,7 +49,7 @@ class ToolVerifier:
 
     def install_tool(self):
         try:
-            password = getpass("Enter your sudo password: ")
+            password =  "pijicong" #getpass("Enter your sudo password: ") | put in pass word here 
             command = f'echo {password} | sudo -S apt-get install -y {self.tool_name}'
             subprocess.run(command, shell=True, check=True)
             print(f"{self.tool_name} has been installed.")
@@ -65,6 +67,112 @@ class ToolVerifier:
             else:
                 print(f"{self.tool_name} will not be installed.")
 
+
+# attacks begin
+class network_chain:
+    '''
+    Cyber Kill Chain
+    - Reconnaissance
+    - intrusion
+    - Exploration
+    - Privilege escalation
+    - lateral movement
+    - obfuscation/ Anti-forensics
+    - Denial of service
+    - Exfiltration
+'''
+    class malware_attack:
+        """
+        - identify a network
+        - use a tool to bruteforce the network 
+        - infultrate the network
+        - use nmap and netdiscover to scan for port and IPs
+            - Find if IP belongs to desktop 
+                - if desktop, dectect if Os is windonw or linux
+                    - if windows deploy windows malware
+                    - if linux deplo,y linux malware
+                - else unknow
+                
+            - else If Server, perform recon
+                - check for database
+                - detect measure for honeypot
+        """
+        
+        def __init__(self, tool):
+            
+            self.tool = tool
+            pass
+                
+        # Recon
+            """
+            what tool do we use during "RECON"
+            - nmap
+            - wireshark
+            - netdiscover
+            - airgeddon
+            - wifite
+            - aircrack-ng 
+            """
+             
+        def recon(self):# Reconnaissance
+            
+            pass
+        
+        #############################################
+        
+        
+        # Intrusion
+            """
+            what do we use during a malware attack
+            -viruses:
+                - worm
+                - trojan 
+                - keylogger
+            """
+        class intrusion:# invasion
+            def detect_os():
+                # Check the platform module for the OS name
+                if 'linux' in platform.system().lower():
+                    return "Linux"
+                elif 'windows' in platform.system().lower():
+                    return "Windows"
+                else:
+                    return "Unknown"
+                
+            def worm():
+                pass
+            
+            def virus():
+                pass
+            
+            def keyylogger():
+                pass 
+
+            pass
+        
+        
+########################################################################
+        def exploration():
+            pass
+        
+        def priv_escalation():
+            pass
+        
+        def Lmovement():
+            pass
+        
+        def tracks_hider():
+            pass
+        
+        def dos():
+            pass
+        
+        def exfiltration():
+            pass
+        
+        
+        
+        
 
 # Persona initialization 
 class The_Roxi:
@@ -97,10 +205,6 @@ class The_Roxi:
     def greet(self):
         return f"Me says, {random.choice(self.greetings)}"
     
-    # def tool_verifier(self, user_input): 
-    #     tool = subprocess.run(['bash', user_input +'--version'], capture_output=True, text=True)
-    #     return tool.stdout
-        
 
 
 #######################################
@@ -138,71 +242,6 @@ class The_Roxi:
             # 3. Provide a witty or sarcastic response to general input.
             return "I'm listening..."
 
-
-
-# attacks begin
-class network_chain:
-    '''
-    Cyber Kill Chain
-    - Reconnaissance
-    - intrusion
-    - Exploration
-    - Privilege escalation
-    - lateral movement
-    - obfuscation/ Anti-forensics
-    - Denial of service
-    - Exfiltration
-'''
-    class malware_attack:
-        
-        def __init__(self):
-            pass
-                
-        # Recon
-            """
-            what tool do we use during "RECON"
-            - nmap
-            - wireshark
-            - netdiscover
-            - airgeddon
-            - wifite
-            - aircrack-ng 
-            
-            """
-        def recon():# Reconnaissance
-            pass
-        
-        #############################################
-        
-        # Intrusion
-            """
-            what do we use during a malware attack
-            -viruses:
-                - worm
-                - trojan 
-            """
-        def intrusion(): # invasion
-            pass
-        
-        def exploration():
-            pass
-        
-        def priv_escalation():
-            pass
-        
-        def Lmovement():
-            pass
-        
-        def tracks_hider():
-            pass
-        
-        def dos():
-            pass
-        
-        def exfiltration():
-            pass
-        
-        
  
 # #########################################
 # Run Implemented classes and functions 
@@ -216,7 +255,11 @@ class network_chain:
 #             break
 #         print(test.name + ">", test.respond(user_input))
         
-# # Usage
+# # Usage for tool verifier 
 # tool_name = 'steghide'
 # verifier = ToolVerifier(tool_name)
 # verifier.verifier()
+
+# # Example usage: for OS detector
+# current_os = detect_os()
+# print(f"The current operating system is: {current_os}")
