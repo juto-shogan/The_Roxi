@@ -81,7 +81,8 @@ class network_chain:
     - Denial of service
     - Exfiltration
 '''
-   def
+    def start():
+       pass
         
         
         
