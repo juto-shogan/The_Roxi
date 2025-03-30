@@ -1,64 +1,70 @@
-# Roxi Project
 
-## **Overview**
+# The Roxi Project
 
-Welcome to the Roxi project—an ambitious journey to develop a modular, intelligent system designed for advanced network operations and learning capabilities. Roxi aims to evolve into a robust tool that seamlessly integrates reconnaissance, decision-making, exploitation, and persistence functions.
+## Overview
 
----
-
-## **What We’ve Done So Far**
-
-### **1. Project Structure**
-
-We’ve laid out a well-defined and scalable project directory structure for Roxi to ensure clear organization and modularity. The structure includes folders for `config`, `modules`, `utils`, `dataGathered`, and more, setting the foundation for efficient development and future expansion.
-
-### **2. Reconnaissance Module**
-
-The reconnaissance module serves as Roxi’s gateway to the network. It scans an IP range and port range, detects open ports, and logs results. Key features include:
-
-- **Banner Grabbing**: Retrieves basic service information for detected open ports.
-- **JSON Logging**: Logs scan results with detailed metadata (host, port, protocol, latency, status, and service info) into a JSON file within the `dataGathered` folder.
-- **Dynamic Folder Creation**: Ensures a dedicated folder (`dataGathered`) is created to store scan logs systematically.
-
-### **3. Decision Engine**
-
-While the decision engine is in the planning stage, we’ve defined its scope and capabilities to ensure it will seamlessly integrate with other modules. The decision engine will act as Roxi’s “brain,” making intelligent decisions based on the reconnaissance results, predefined rules, and dynamic learning in future iterations.
-
-#### **Scope and Goals for the Decision Engine**
-
-- **Input Handling**: Process structured data from modules like reconnaissance and exploitation.
-- **Rule-Based Logic**: Make initial decisions using simple `if-else` conditions.
-- **Task Sequencing**: Prioritize actions and coordinate steps based on risk and impact.
-- **Learning and Feedback**: Integrate reinforcement learning for dynamic improvements in decision-making.
-- **Modular Interaction**: Act as a middle layer connecting reconnaissance, exploitation, persistence, and logging.
+**Roxi** is an intelligent automated system designed to simulate reconnaissance, decision-making, weaponization, delivery, persistence, and feedback refinement. Built as a modular framework, Roxi adapts based on live results and grows smarter over time.
 
 ---
 
-## **Next Steps**
+## **Features**
 
-### **1. Build the Decision Engine**
+1. **Reconnaissance and Decision Engine**:
 
-- Implement a rule-based framework for immediate decision-making based on scan results.
-- Gradually expand with scoring systems and feedback loops for smarter decisions.
+   - Scans targets for open ports and services.
+   - Generates decisions based on detected services (e.g., HTTP, SSH, FTP, etc.).
+   - Outputs decisions to `decision_log.json` for further processing.
+2. **Weaponization Module**:
 
-### **2. Refine the Reconnaissance Module**
+   - Matches decisions with vulnerabilities or exploits (mock data used for now).
+   - Generates weaponization tasks, including prepared payloads, and saves them to `weaponization_tasks.json`.
+3. **Delivery Module**:
 
-- Introduce multithreading for faster scans.
-- Expand service detection capabilities and integrate deeper analyses.
+   - Executes delivery tasks such as HTTP, FTP, Telnet, SMTP probes, or mock payload delivery.
+   - Logs delivery results in `delivery_log.json`.
+4. **Feedback Loop**:
 
-### **3. Modular Development**
+   - Refines decisions based on delivery outcomes (success/failure).
+   - Updates decision priorities dynamically and saves refined decisions in `refined_decision_log.json`.
+5. **Persistence Simulation**:
 
-- Lay the groundwork for exploitation and persistence modules that interact seamlessly with the decision engine.
+   - Simulates maintaining access via mock backdoors and session tracking.
+   - Saves persistence results in `persistence_log.json`.
 
 ---
 
-## **How to Run the Project**
+## **File Structure**
 
-To set up and run the current modules:
-
-1. Clone this repository.
-2. Navigate to the project directory.
-3. Run the `reconnaissance.py` module:
-   ```bash
-   python modules/reconnaissance.py
-   ```
+```plaintext
+The_Roxi/
+│
+├── data/                     # Data storage for CVE files (future)
+│
+├── logs/                     # Log storage
+│   ├── engineData/           # Decision engine logs
+│   │   ├── decision_log.json
+│   │   └── refined_decision_log.json
+│   ├── weaponized_data/      # Weaponization task logs
+│   │   ├── weaponization_tasks.json
+│   ├── deliveryLogs/         # Delivery task logs
+│   │   ├── delivery_log.json
+│   └── persistence/          # Persistence simulation logs
+│       ├── sessions.json
+│       └── persistence_log.json
+│
+├── modules/                  # Modular components of Roxi
+│   ├── analytics/            # Analytics tools (to be integrated)
+│   │   └── delivery_analytics.py
+│   ├── database/             # Database setup scripts (future integration)
+│   │   ├── setup_cve_database.py
+│   │   └── query_cve.py
+│   ├── monitoring/           # Real-time monitoring tools
+│   │   └── monitor.py
+│   ├── persistence/          # Persistence simulation tools
+│   │   └── persistence.py
+│   ├── weaponization.py      # Generates weaponization tasks
+│   ├── decision_engine.py    # Processes scanned data and makes decisions
+│   └── delivery.py           # Handles task delivery for various protocols
+│
+└── README.md                 # Project documentation
+```
