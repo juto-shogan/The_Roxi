@@ -19,6 +19,782 @@
             "action": {
                 "retry": 2
             }
+        },
+        {
+            "id": "http_payload_001",
+            "service": "http",
+            "action": "send GET request",
+            "data": {
+                "url": "http://target_host:target_port",
+                "headers": {
+                    "User-Agent": "Roxi-Bot"
+                }
+            }
+        },
+        {
+            "id": "http_payload_002",
+            "service": "http",
+            "action": "send POST request",
+            "data": {
+                "url": "http://target_host:target_port",
+                "headers": {
+                    "User-Agent": "Roxi-Bot"
+                },
+                "body": {
+                    "key1": "value1",
+                    "key2": "value2"
+                }
+            }
+        },
+        {
+            "id": "http_payload_003",
+            "service": "http",
+            "action": "send PUT request",
+            "data": {
+                "url": "http://target_host:target_port",
+                "headers": {
+                    "User-Agent": "Roxi-Bot"
+                },
+                "body": {
+                    "key1": "value1",
+                    "key2": "value2"
+                }
+            }
+        },
+        {
+            "id": "http_payload_004",
+            "service": "http",
+            "action": "send DELETE request",
+            "data": {
+                "url": "http://target_host:target_port",
+                "headers": {
+                    "User-Agent": "Roxi-Bot"
+                },
+                "body": {
+                    "key1": "value1",
+                    "key2": "value2"
+                }
+            }
+        },
+        {
+            "id": "http_payload_005",
+            "service": "http",
+            "action": "send PATCH request",
+            "data": {
+                "url": "http://target_host:target_port",
+                "headers": {
+                    "User-Agent": "Roxi-Bot"
+                },
+                "body": {
+                    "key1": "value1",
+                    "key2": "value2"
+                }
+            }
+        },
+        {
+            "id": "http_payload_006",
+            "service": "http",
+            "action": "send OPTIONS request",
+            "data": {
+                "url": "http://target_host:target_port",
+                "headers": {
+                    "User-Agent": "Roxi-Bot"
+                },
+                "body": {
+                    "key1": "value1",
+                    "key2": "value2"
+                }
+            }
+        },
+        {
+            "id": "http_payload_007",
+            "service": "http",
+            "action": "send HEAD request",
+            "data": {
+                "url": "http://target_host:target_port",
+                "headers": {
+                    "User-Agent": "Roxi-Bot"
+                },
+                "body": {
+                    "key1": "value1",
+                    "key2": "value2"
+                }
+            }
+        },
+        {
+            "id": "http_payload_008",
+            "service": "http",
+            "action": "send TRACE request",
+            "data": {
+                "url": "http://target_host:target_port",
+                "headers": {
+                    "User-Agent": "Roxi-Bot"
+                },
+                "body": {
+                    "key1": "value1",
+                    "key2": "value2"
+                }
+            }
+        },
+        {
+            "id": 3,
+            "description": "Log all HTTP requests",
+            "condition": {
+                "service": "http"
+            },
+            "action": {
+                "log": true
+            }
+        },
+        {
+            "id": 4,
+            "description": "Throttle requests to avoid rate limiting",
+            "condition": {
+                "service": "http",
+                "rate_limit": true
+            },
+            "action": {
+                "throttle": 1000 
+            }
+        },
+        {
+            "id": 5,
+            "description": "Alert on high latency",
+            "condition": {
+                "service": "http",
+                "latency": {
+                    "threshold": 2000 
+                }
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": "ftp_payload_001",
+            "service": "ftp",
+            "action": "open connection",
+            "data": {
+                "host": "target_host",
+                "port": "target_port",
+                "username": "anonymous",
+                "password": ""
+            }
+        },
+        {
+            "id": "ftp_payload_002",
+            "service": "ftp",
+            "action": "upload file",
+            "data": {
+                "local_path": "/path/to/local/file",
+                "remote_path": "/path/to/remote/file"
+            }
+        },
+        {
+            "id": "ftp_payload_003",
+            "service": "ftp",
+            "action": "download file",
+            "data": {
+                "remote_path": "/path/to/remote/file",
+                "local_path": "/path/to/local/file"
+            }
+        },
+        {
+            "id": 6,
+            "description": "Log all FTP actions",
+            "condition": {
+                "service": "ftp"
+            },
+            "action": {
+                "log": true
+            }
+        },
+        {
+            "id": 7,
+            "description": "Retry FTP connections on failure",
+            "condition": {
+                "service": "ftp",
+                "status": "failure"
+            },
+            "action": {
+                "retry": 3
+            }
+        },
+        {
+            "id": 8,
+            "description": "Alert on FTP errors",
+            "condition": {
+                "service": "ftp",
+                "status": "error"
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 9,
+            "description": "Throttle FTP requests to avoid rate limiting",
+            "condition": {
+                "service": "ftp",
+                "rate_limit": true
+            },
+            "action": {
+                "throttle": 1000 
+            }
+        },
+        {
+            "id": 10,
+            "description": "Prioritize FTP services",
+            "condition": {
+                "service": "ftp"
+            },
+            "action": {
+                "priority": "high"
+            }
+        },
+        {
+            "id": 11,
+            "description": "Log all DNS queries",
+            "condition": {
+                "service": "dns"
+            },
+            "action": {
+                "log": true
+            }
+        },
+        {
+            "id": 12,
+            "description": "Alert on DNS errors",
+            "condition": {
+                "service": "dns",
+                "status": "error"
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 13,
+            "description": "Throttle DNS requests to avoid rate limiting",
+            "condition": {
+                "service": "dns",
+                "rate_limit": true
+            },
+            "action": {
+                "throttle": 1000 
+            }
+        },
+        {
+            "id": 14,
+            "description": "Prioritize DNS services",
+            "condition": {
+                "service": "dns"
+            },
+            "action": {
+                "priority": "high"
+            }
+        },
+        {
+            "id": 15,
+            "description": "Retry DNS queries on failure",
+            "condition": {
+                "service": "dns",
+                "status": "failure"
+            },
+            "action": {
+                "retry": 3
+            }
+        },
+        {
+            "id": 16,
+            "description": "Alert on high DNS latency",
+            "condition": {
+                "service": "dns",
+                "latency": {
+                    "threshold": 2000 
+                }
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 17,
+            "description": "Log all SMTP actions",
+            "condition": {
+                "service": "smtp"
+            },
+            "action": {
+                "log": true
+            }
+        },
+        {
+            "id": 18,
+            "description": "Retry SMTP connections on failure",
+            "condition": {
+                "service": "smtp",
+                "status": "failure"
+            },
+            "action": {
+                "retry": 3
+            }
+        },
+        {
+            "id": 19,
+            "description": "Alert on SMTP errors",
+            "condition": {
+                "service": "smtp",
+                "status": "error"
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 20,
+            "description": "Throttle SMTP requests to avoid rate limiting",
+            "condition": {
+                "service": "smtp",
+                "rate_limit": true
+            },
+            "action": {
+                "throttle": 1000 
+            }
+        },
+        {
+            "id": 21,
+            "description": "Prioritize SMTP services",
+            "condition": {
+                "service": "smtp"
+            },
+            "action": {
+                "priority": "high"
+            }
+        },
+        {
+            "id": 22,
+            "description": "Alert on high SMTP latency",
+            "condition": {
+                "service": "smtp",
+                "latency": {
+                    "threshold": 2000 
+                }
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 23,
+            "description": "Log all POP3 actions",
+            "condition": {
+                "service": "pop3"
+            },
+            "action": {
+                "log": true
+            }
+        },
+        {
+            "id": 24,
+            "description": "Retry POP3 connections on failure",
+            "condition": {
+                "service": "pop3",
+                "status": "failure"
+            },
+            "action": {
+                "retry": 3
+            }
+        },
+        {
+            "id": 25,
+            "description": "Alert on POP3 errors",
+            "condition": {
+                "service": "pop3",
+                "status": "error"
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 26,
+            "description": "Throttle POP3 requests to avoid rate limiting",
+            "condition": {
+                "service": "pop3",
+                "rate_limit": true
+            },
+            "action": {
+                "throttle": 1000 
+            }
+        },
+        {
+            "id": 27,
+            "description": "Prioritize POP3 services",
+            "condition": {
+                "service": "pop3"
+            },
+            "action": {
+                "priority": "high"
+            }
+        },
+        {
+            "id": 28,
+            "description": "Alert on high POP3 latency",
+            "condition": {
+                "service": "pop3",
+                "latency": {
+                    "threshold": 2000 
+                }
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 29,
+            "description": "Log all IMAP actions",
+            "condition": {
+                "service": "imap"
+            },
+            "action": {
+                "log": true
+            }
+        },
+        {
+            "id": 30,
+            "description": "Retry IMAP connections on failure",
+            "condition": {
+                "service": "imap",
+                "status": "failure"
+            },
+            "action": {
+                "retry": 3
+            }
+        },
+        {
+            "id": 31,
+            "description": "Alert on IMAP errors",
+            "condition": {
+                "service": "imap",
+                "status": "error"
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 32,
+            "description": "Throttle IMAP requests to avoid rate limiting",
+            "condition": {
+                "service": "imap",
+                "rate_limit": true
+            },
+            "action": {
+                "throttle": 1000 
+            }
+        },
+        {
+            "id": 33,
+            "description": "Prioritize IMAP services",
+            "condition": {
+                "service": "imap"
+            },
+            "action": {
+                "priority": "high"
+            }
+        },
+        {
+            "id": 34,
+            "description": "Alert on high IMAP latency",
+            "condition": {
+                "service": "imap",
+                "latency": {
+                    "threshold": 2000 
+                }
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 35,
+            "description": "Log all LDAP actions",
+            "condition": {
+                "service": "ldap"
+            },
+            "action": {
+                "log": true
+            }
+        },
+        {
+            "id": 36,
+            "description": "Retry LDAP connections on failure",
+            "condition": {
+                "service": "ldap",
+                "status": "failure"
+            },
+            "action": {
+                "retry": 3
+            }
+        },
+        {
+            "id": 37,
+            "description": "Alert on LDAP errors",
+            "condition": {
+                "service": "ldap",
+                "status": "error"
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 38,
+            "description": "Throttle LDAP requests to avoid rate limiting",
+            "condition": {
+                "service": "ldap",
+                "rate_limit": true
+            },
+            "action": {
+                "throttle": 1000 
+            }
+        },
+        {
+            "id": 39,
+            "description": "Prioritize LDAP services",
+            "condition": {
+                "service": "ldap"
+            },
+            "action": {
+                "priority": "high"
+            }
+        },
+        {
+            "id": 40,
+            "description": "Alert on high LDAP latency",
+            "condition": {
+                "service": "ldap",
+                "latency": {
+                    "threshold": 2000 
+                }
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 41,
+            "description": "Log all SNMP actions",
+            "condition": {
+                "service": "snmp"
+            },
+            "action": {
+                "log": true
+            }
+        },
+        {
+            "id": 42,
+            "description": "Retry SNMP connections on failure",
+            "condition": {
+                "service": "snmp",
+                "status": "failure"
+            },
+            "action": {
+                "retry": 3
+            }
+        },
+        {
+            "id": 43,
+            "description": "Alert on SNMP errors",
+            "condition": {
+                "service": "snmp",
+                "status": "error"
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 44,
+            "description": "Throttle SNMP requests to avoid rate limiting",
+            "condition": {
+                "service": "snmp",
+                "rate_limit": true
+            },
+            "action": {
+                "throttle": 1000 
+            }
+        },
+        {
+            "id": 45,
+            "description": "Prioritize SNMP services",
+            "condition": {
+                "service": "snmp"
+            },
+            "action": {
+                "priority": "high"
+            }
+        },
+        {
+            "id": 46,
+            "description": "Alert on high SNMP latency",
+            "condition": {
+                "service": "snmp",
+                "latency": {
+                    "threshold": 2000 
+                }
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 47,
+            "description": "Log all MQTT actions",
+            "condition": {
+                "service": "mqtt"
+            },
+            "action": {
+                "log": true
+            }
+        },
+        {
+            "id": 48,
+            "description": "Retry MQTT connections on failure",
+            "condition": {
+                "service": "mqtt",
+                "status": "failure"
+            },
+            "action": {
+                "retry": 3
+            }
+        },
+        {
+            "id": 49,
+            "description": "Alert on MQTT errors",
+            "condition": {
+                "service": "mqtt",
+                "status": "error"
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 50,
+            "description": "Throttle MQTT requests to avoid rate limiting",
+            "condition": {
+                "service": "mqtt",
+                "rate_limit": true
+            },
+            "action": {
+                "throttle": 1000 
+            }
+        },
+        {
+            "id": 51,
+            "description": "Prioritize MQTT services",
+            "condition": {
+                "service": "mqtt"
+            },
+            "action": {
+                "priority": "high"
+            }
+        },
+        {
+            "id": 52,
+            "description": "Alert on high MQTT latency",
+            "condition": {
+                "service": "mqtt",
+                "latency": {
+                    "threshold": 2000 
+                }
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 53,
+            "description": "Log all WebSocket actions",
+            "condition": {
+                "service": "websocket"
+            },
+            "action": {
+                "log": true
+            }
+        },
+        {
+            "id": 54,
+            "description": "Retry WebSocket connections on failure",
+            "condition": {
+                "service": "websocket",
+                "status": "failure"
+            },
+            "action": {
+                "retry": 3
+            }
+        },
+        {
+            "id": 55,
+            "description": "Alert on WebSocket errors",
+            "condition": {
+                "service": "websocket",
+                "status": "error"
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": 56,
+            "description": "Throttle WebSocket requests to avoid rate limiting",
+            "condition": {
+                "service": "websocket",
+                "rate_limit": true
+            },
+            "action": {
+                "throttle": 1000 
+            }
+        },
+        {
+            "id": 57,
+            "description": "Prioritize WebSocket services",
+            "condition": {
+                "service": "websocket"
+            },
+            "action": {
+                "priority": "high"
+            }
+        },
+        {
+            "id": 58,
+            "description": "Alert on high WebSocket latency",
+            "condition": {
+                "service": "websocket",
+                "latency": {
+                    "threshold": 2000 
+                }
+            },
+            "action": {
+                "alert": true
+            }
+        },
+        {
+            "id": "smtp_payload_001",
+            "service": "smtp",
+            "action": "send email",
+            "data": {
+                "host": "target_host",
+                "port": "target_port",
+                "email": {
+                    "from": "test@example.com",
+                    "to": "target@example.com",
+                    "subject": "Test Payload",
+                    "body": "This is a mock SMTP payload."
+                }
+            }
         }
+        
     ]
 }

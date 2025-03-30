@@ -1,6 +1,7 @@
 import json
 import os
 
+
 # Ensure the log folder exists
 def ensure_logs_folder():
     folder = "logs"
@@ -8,68 +9,88 @@ def ensure_logs_folder():
         os.makedirs(folder)
     return folder
 
-# Load decisions from the decision log
-def load_decisions(decision_log):
+# Load decisions from the JSON file
+def load_decisions(decision_file):
     try:
-        with open(decision_log, "r") as file:
-            return json.load(file)[-1]["decisions"]  # Extract the latest decisions
+        with open(decision_file, "r") as file:
+            decisions = json.load(file)
+            return decisions
     except FileNotFoundError:
-        print(f"Decision log file not found: {decision_log}")
+        print(f"File not found: {decision_file}. Please run the decision engine first.")
         return []
-    except IndexError:
-        print(f"No valid decisions found in the decision log.")
+    except json.JSONDecodeError:
+        print(f"Error decoding JSON in {decision_file}. Check the file format.")
         return []
 
-# Mock CVE data (temporary until the database is functional)
-mock_cve_database = {
-    "http": [{"cve_id": "CVE-2023-12345", "description": "HTTP vulnerability"}],
-    "ssh": [{"cve_id": "CVE-2019-14899", "description": "SSH session hijacking"}],
-    "ftp": [{"cve_id": "CVE-2020-67890", "description": "FTP buffer overflow"}],
-    "smtp": [{"cve_id": "CVE-2022-55555", "description": "SMTP relay vulnerability"}],
-    "dns": [
-    {"cve_id": "CVE-2021-44228", "description": "DNS amplification vulnerability"},
-    {"cve_id": "CVE-2022-12345", "description": "DNS cache poisoning"}
-    ]
-}
+# Generate mock payloads based on detected services
+import json
 
-# Generate weaponization tasks
-def generate_tasks(decisions):
-    tasks = []
-    for decision in decisions:
-        service = decision["service"]
-        host = decision["host"]
-        port = decision["port"]
-
-        # Match decisions to mock CVE data
-        exploits = mock_cve_database.get(service, [{"cve_id": "N/A", "description": "No CVEs available"}])
-        for exploit in exploits:
-            tasks.append({
+# Generate mock payloads based on detected services
+def generate_payload(service, host, port):
+    payloads = {
+        "http": {
+            "id": "http_payload_001",
+            "action": "send GET request",
+            "data": {
+                "url": f"http://{host}:{port}",
+                "headers": {
+                    "User-Agent": "Roxi-Bot"
+                }
+            }
+        },
+        "ftp": {
+            "id": "ftp_payload_001",
+            "action": "open connection",
+            "data": {
                 "host": host,
                 "port": port,
-                "service": service,
-                "cve_id": exploit["cve_id"],
-                "description": exploit["description"],
-                "prepared_payload": f"Payload for {exploit['cve_id']} targeting {service}"
-            })
-    return tasks
+                "username": "anonymous",
+                "password": ""
+            }
+        },
+        "smtp": {
+            "id": "smtp_payload_001",
+            "action": "send email",
+            "data": {
+                "host": host,
+                "port": port,
+                "email": {
+                    "from": "test@example.com",
+                    "to": "target@example.com",
+                    "subject": "Test Payload",
+                    "body": "This is a mock SMTP payload."
+                }
+            }
+        }
+    }
+    return payloads.get(service, None)
 
-# Save tasks to the specified JSON file
-def save_tasks(tasks, output_file):
+# Generate weaponization tasks
+def generate_weaponization_tasks(decisions, output_file):
+    tasks = []
+    for decision in decisions:
+        service = decision.get("service")
+        host = decision.get("host")
+        port = decision.get("port")
+        payload = generate_payload(service, host, port)
+        if payload:
+            tasks.append(payload)
+
+    # Save weaponization tasks to JSON file
     with open(output_file, "w") as file:
         json.dump(tasks, file, indent=4)
     print(f"Weaponization tasks saved to {output_file}")
 
-# Main execution
+# Entry point for weaponization module
 if __name__ == "__main__":
-    decision_file = "C:/Users/somto/OneDrive/Desktop/The_Roxi/logs/engineData/decision_log.json"  # Decision log input
-    output_file = "C:/Users/somto/OneDrive/Desktop/The_Roxi/logs/weaponized_data/weaponization_tasks.json"  # Updated file path for weaponization tasks
+    input_decisions_file = "logs/engineData/decision_log.json"  # Input decisions
+    output_tasks_file = "logs/weaponized_data/weaponization_tasks.json"  # Output weaponization tasks
 
-    # Load decisions
-    decisions = load_decisions(decision_file)
-
-    # Generate tasks
-    if decisions:
-        weaponization_tasks = generate_tasks(decisions)
-        save_tasks(weaponization_tasks, output_file)
-    else:
-        print("No decisions available for weaponization.")
+    try:
+        with open(input_decisions_file, "r") as file:
+            decisions = json.load(file)
+            generate_weaponization_tasks(decisions, output_tasks_file)
+    except FileNotFoundError:
+        print(f"File not found: {input_decisions_file}. Please run the decision engine first.")
+    except json.JSONDecodeError:
+        print(f"Error decoding JSON in {input_decisions_file}.")
