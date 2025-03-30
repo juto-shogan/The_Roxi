@@ -33,37 +33,21 @@ def log_decisions_to_json(decisions, filename):
     with open(filepath, "w") as file:
         json.dump(existing_data, file, indent=4)
 
-# Function to process the scan results and make decisions
+# Function to process scan results and log open ports
 def make_decisions(scan_results):
     decisions = []
     for result in scan_results:
         host = result["host"]
         port = result["port"]
-        service = result["service"]
+        status = result["status"]
         
-        # Rule: If HTTP (port 80) is open, probe HTTP
-        if port == 80:
+        # Log only open ports
+        if status == "open":
             decisions.append({
                 "host": host,
                 "port": port,
-                "action": "probe_http",
-                "reason": f"Service detected: {service}"
-            })
-        # Rule: If SSH (port 22) is open, mark for SSH tasks
-        elif port == 22:
-            decisions.append({
-                "host": host,
-                "port": port,
-                "action": "mark_for_ssh",
-                "reason": f"Service detected: {service}"
-            })
-        # Rule: For unknown services, log as pending analysis
-        else:
-            decisions.append({
-                "host": host,
-                "port": port,
-                "action": "pending_analysis",
-                "reason": f"Unknown service detected: {service}"
+                "action": "log_open_port",
+                "reason": f"Port {port} is open"
             })
     return decisions
 
@@ -87,4 +71,4 @@ if __name__ == "__main__":
         log_decisions_to_json(decisions, "decision_log.json")
         print("Decisions made and saved to decisionLogs/decision_log.json")
     else:
-        print("No decisions were made as no scan results were found.")
+        print("No open ports found. No decisions were made.")
