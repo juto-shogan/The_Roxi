@@ -128,5 +128,70 @@
                 "reason": "Port 25 is open"
             }
         ]
+    },
+    {
+        "timestamp": "2025-03-30 16:39:28",
+        "decisions": [
+            {
+                "host": "192.168.1.1",
+                "port": 25,
+                "action": "probe_smtp",
+                "reason": "SMTP detected on port 25. Evaluate mail server security."
+            },
+            {
+                "host": "192.168.1.2",
+                "port": 25,
+                "action": "probe_smtp",
+                "reason": "SMTP detected on port 25. Evaluate mail server security."
+            },
+            {
+                "host": "192.168.1.5",
+                "port": 25,
+                "action": "probe_smtp",
+                "reason": "SMTP detected on port 25. Evaluate mail server security."
+            },
+            {
+                "host": "192.168.1.6",
+                "port": 25,
+                "action": "probe_smtp",
+                "reason": "SMTP detected on port 25. Evaluate mail server security."
+            },
+            {
+                "host": "192.168.1.7",
+                "port": 25,
+                "action": "probe_smtp",
+                "reason": "SMTP detected on port 25. Evaluate mail server security."
+            },
+            {
+                "host": "192.168.1.8",
+                "port": 25,
+                "action": "probe_smtp",
+                "reason": "SMTP detected on port 25. Evaluate mail server security."
+            },
+            {
+                "host": "192.168.1.9",
+                "port": 25,
+                "action": "probe_smtp",
+                "reason": "SMTP detected on port 25. Evaluate mail server security."
+            },
+            {
+                "host": "192.168.1.10",
+                "port": 25,
+                "action": "probe_smtp",
+                "reason": "SMTP detected on port 25. Evaluate mail server security."
+            },
+            {
+                "host": "192.168.1.12",
+                "port": 25,
+                "action": "probe_smtp",
+                "reason": "SMTP detected on port 25. Evaluate mail server security."
+            },
+            {
+                "host": "192.168.1.14",
+                "port": 25,
+                "action": "probe_smtp",
+                "reason": "SMTP detected on port 25. Evaluate mail server security."
+            }
+        ]
     }
 ]
