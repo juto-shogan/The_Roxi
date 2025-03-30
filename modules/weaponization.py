@@ -1,53 +1,71 @@
 import json
+import os
 
-# Function to load CVE data for weaponization (mock integration)
-def load_cve_data(filepath):
+# Ensure the log folder exists
+def ensure_logs_folder():
+    folder = "logs"
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    return folder
+
+# Load decisions from the decision log
+def load_decisions(decision_log):
     try:
-        with open(filepath, "r") as file:
-            return json.load(file)
+        with open(decision_log, "r") as file:
+            return json.load(file)[-1]["decisions"]  # Extract the latest decisions
     except FileNotFoundError:
-        print(f"CVE data file not found at {filepath}")
+        print(f"Decision log file not found: {decision_log}")
+        return []
+    except IndexError:
+        print(f"No valid decisions found in the decision log.")
         return []
 
-# Function to generate weaponization tasks
-def generate_tasks_from_decisions(decisions, cve_data):
+# Mock CVE data (temporary until the database is functional)
+mock_cve_database = {
+    "http": [{"cve_id": "CVE-2023-12345", "description": "HTTP vulnerability"}],
+    "ssh": [{"cve_id": "CVE-2019-14899", "description": "SSH session hijacking"}],
+    "ftp": [{"cve_id": "CVE-2020-67890", "description": "FTP buffer overflow"}],
+    "smtp": [{"cve_id": "CVE-2022-55555", "description": "SMTP relay vulnerability"}],
+}
+
+# Generate weaponization tasks
+def generate_tasks(decisions):
     tasks = []
     for decision in decisions:
-        service = decision.get("reason", "").split(":")[1].strip() if "reason" in decision else "Generic"
+        service = decision["service"]
         host = decision["host"]
         port = decision["port"]
 
-        # Match CVEs to detected services (mock logic)
-        relevant_cves = [cve for cve in cve_data if service.lower() in cve["description"].lower()]
-        for cve in relevant_cves:
+        # Match decisions to mock CVE data
+        exploits = mock_cve_database.get(service, [{"cve_id": "N/A", "description": "No CVEs available"}])
+        for exploit in exploits:
             tasks.append({
                 "host": host,
                 "port": port,
                 "service": service,
-                "cve_id": cve["cve_id"],
-                "description": cve["description"],
-                "prepared_payload": f"Payload for {cve['cve_id']} targeting {service}"
+                "cve_id": exploit["cve_id"],
+                "description": exploit["description"],
+                "prepared_payload": f"Payload for {exploit['cve_id']} targeting {service}"
             })
     return tasks
 
-# Main function for weaponization
-def weaponize(decision_file, cve_file):
-    # Load decisions
-    with open(decision_file, "r") as file:
-        decisions = json.load(file)[-1]["decisions"]  # Use latest decisions
+# Save tasks to the specified JSON file
+def save_tasks(tasks, output_file):
+    with open(output_file, "w") as file:
+        json.dump(tasks, file, indent=4)
+    print(f"Weaponization tasks saved to {output_file}")
 
-    # Load CVE data
-    cve_data = load_cve_data(cve_file)
+# Main execution
+if __name__ == "__main__":
+    decision_file = "C:/Users/somto/OneDrive/Desktop/The_Roxi/logs/engineData/decision_log.json"  # Decision log input
+    output_file = "C:/Users/somto/OneDrive/Desktop/The_Roxi/logs/weaponized_data/weaponization_tasks.json"  # Updated file path for weaponization tasks
+
+    # Load decisions
+    decisions = load_decisions(decision_file)
 
     # Generate tasks
-    tasks = generate_tasks_from_decisions(decisions, cve_data)
-
-    # Save weaponization tasks
-    with open("weaponization_tasks.json", "w") as file:
-        json.dump(tasks, file, indent=4)
-    print("Weaponization tasks saved to weaponization_tasks.json")
-
-if __name__ == "__main__":
-    decision_file = "../logs/decisionLogs/decision_log.json"  # Update path if needed
-    cve_file = "../data/cve_data.json"  # Update path if needed
-    weaponize(decision_file, cve_file)
+    if decisions:
+        weaponization_tasks = generate_tasks(decisions)
+        save_tasks(weaponization_tasks, output_file)
+    else:
+        print("No decisions available for weaponization.")

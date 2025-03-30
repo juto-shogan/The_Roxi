@@ -1,0 +1,98 @@
+[
+    {
+        "host": "192.168.1.1",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.2",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.3",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.4",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.5",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.7",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.10",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.11",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.12",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.13",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.14",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    },
+    {
+        "host": "192.168.1.15",
+        "port": 25,
+        "service": "smtp",
+        "cve_id": "CVE-2022-55555",
+        "description": "SMTP relay vulnerability",
+        "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+    }
+]
