@@ -1,0 +1,290 @@
+[
+    {
+        "task": {
+            "host": "192.168.1.1",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.1:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.1",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.1:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.2",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.2:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.2",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.2:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.3",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.3:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.3",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.3:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.4",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.4:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.4",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.4:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.5",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.5:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.5",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.5:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.7",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.7:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.7",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.7:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.10",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.10:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.10",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.10:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.11",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.11:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.11",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.11:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.12",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.12:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.12",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.12:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.13",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.13:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.13",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.13:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.14",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.14:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.14",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.14:25."
+    },
+    {
+        "task": {
+            "host": "192.168.1.15",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Simulated backdoor on 192.168.1.15:25 for smtp."
+    },
+    {
+        "task": {
+            "host": "192.168.1.15",
+            "port": 25,
+            "service": "smtp",
+            "cve_id": "CVE-2022-55555",
+            "description": "SMTP relay vulnerability",
+            "prepared_payload": "Payload for CVE-2022-55555 targeting smtp"
+        },
+        "status": "success",
+        "details": "Session tracked for 192.168.1.15:25."
+    }
+]

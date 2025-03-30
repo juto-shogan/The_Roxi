@@ -26,6 +26,10 @@ mock_cve_database = {
     "ssh": [{"cve_id": "CVE-2019-14899", "description": "SSH session hijacking"}],
     "ftp": [{"cve_id": "CVE-2020-67890", "description": "FTP buffer overflow"}],
     "smtp": [{"cve_id": "CVE-2022-55555", "description": "SMTP relay vulnerability"}],
+    "dns": [
+    {"cve_id": "CVE-2021-44228", "description": "DNS amplification vulnerability"},
+    {"cve_id": "CVE-2022-12345", "description": "DNS cache poisoning"}
+    ]
 }
 
 # Generate weaponization tasks
