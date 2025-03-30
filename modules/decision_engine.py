@@ -1,7 +1,11 @@
 import json
-import os
+import os 
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from datetime import datetime
+from modules.rules_engine import load_rules, process_rules
 
+# This module is responsible for making decisions based on scan results and logging them.
 # Function to ensure the decision logs folder exists
 def ensure_logs_folder_exists():
     folder_name = "logs/engineData"
@@ -10,31 +14,46 @@ def ensure_logs_folder_exists():
         os.makedirs(folder_name)
     return folder_name
 
-# Function to log decisions to a JSON file
+# Ensure the directory for the file exists
+def ensure_directory_exists(directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+# Log decisions to a JSON file
 def log_decisions_to_json(decisions, filename):
-    filepath = os.path.join(ensure_logs_folder_exists(), filename)
+    # Ensure directory exists before writing
+    directory = os.path.dirname(filename)
+    ensure_directory_exists(directory)
 
-    # If the file doesn't exist, create it
-    if not os.path.exists(filepath):
-        with open(filepath, "w") as file:
-            json.dump([], file)
+    # Write decisions to the file
+    with open(filename, "w") as file:
+        json.dump(decisions, file, indent=4)
 
-    # Read existing data and append new decisions
-    with open(filepath, "r") as file:
-        existing_data = json.load(file)
+# Process decisions with rules
+def refine_decisions_with_rules(decisions, rules_file):
+    rules = load_rules(rules_file)
+    for decision in decisions:
+        decision = process_rules(rules, decision)
+    return decisions
 
-    # Add a timestamp to the decisions
-    decisions_with_timestamp = {
-        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "decisions": decisions
-    }
-    existing_data.append(decisions_with_timestamp)
+# Main function for decision refinement
+def refine_decisions(decisions_file, rules_file):
+    try:
+        with open(decisions_file, "r") as file:
+            decisions = json.load(file)
 
-    # Write updated data back to the file
-    with open(filepath, "w") as file:
-        json.dump(existing_data, file, indent=4)
+        refined_decisions = refine_decisions_with_rules(decisions, rules_file)
 
-# Function to process scan results and make port-specific decisions
+        # Save refined decisions to file
+        with open("logs/engineData/refined_decision_log.json", "w") as file:
+            json.dump(refined_decisions, file, indent=4)
+
+        print("Decisions refined and saved to logs/engineData/refined_decision_log.json")
+
+    except FileNotFoundError:
+        print(f"Decisions file {decisions_file} not found.")
+    except json.JSONDecodeError:
+        print(f"Error decoding JSON in {decisions_file}.")
 # Function to process scan results and make port-specific decisions
 def make_decisions(scan_results):
     decisions = []
@@ -124,25 +143,35 @@ def prioritize_decisions(decisions):
 
 # Main execution block
 if __name__ == "__main__":
-    # Load the scanner results from a JSON file
-    scan_results_file = "logs/scanData/scan_results.json"  # Update the path as needed
+    # Define paths for scan results and rules
+    scan_results_file = "logs/scanData/scan_results.json"
+    rules_file = "rules.json"
 
     try:
+        # Load the latest scan results
         with open(scan_results_file, "r") as file:
-            scan_results = json.load(file)[-1]["data"]  # Load the latest scan results
-    except (FileNotFoundError, IndexError, KeyError):
-        print("No scan results found. Please run the scanner first.")
+            scan_results = json.load(file)[-1]["data"]
+    except FileNotFoundError:
+        print(f"File not found: {scan_results_file}. Please run the scanner first.")
+        scan_results = []
+    except (IndexError, KeyError, json.JSONDecodeError):
+        print("Error reading scan results. Please check the scanner output format.")
         scan_results = []
 
-    # Step 1: Generate basic decisions
+    # Step 1: Generate basic decisions based on scan results
     decisions = make_decisions(scan_results)
 
-    # Step 2: Prioritize decisions
+    # Step 2: Apply rules to prioritize decisions
     if decisions:
-        prioritized_decisions = prioritize_decisions(decisions)
+        # Load rules and apply them to the decisions
+        rules = load_rules(rules_file)
+        prioritized_decisions = []
+        for decision in decisions:
+            decision = process_rules(rules, decision)  # Apply rules
+            prioritized_decisions.append(decision)
 
-        # Step 3: Save the prioritized decisions to a JSON log
-        log_decisions_to_json(prioritized_decisions, "decision_log.json")
+        # Step 3: Save the prioritized decisions to a JSON log file
+        log_decisions_to_json(prioritized_decisions, "logs/engineData/decision_log.json")
         print("Prioritized decisions saved to logs/engineData/decision_log.json")
     else:
-        print("No open ports found. No decisions were made.")
+        print("No open ports found in the scan results. No decisions were made.")

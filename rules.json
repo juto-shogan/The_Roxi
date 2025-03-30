@@ -1,0 +1,24 @@
+{
+    "rules": [
+        {
+            "id": 1,
+            "description": "Prioritize HTTP services",
+            "condition": {
+                "service": "http"
+            },
+            "action": {
+                "priority": "high"
+            }
+        },
+        {
+            "id": 2,
+            "description": "Retry failed deliveries twice",
+            "condition": {
+                "status": "failure"
+            },
+            "action": {
+                "retry": 2
+            }
+        }
+    ]
+}
