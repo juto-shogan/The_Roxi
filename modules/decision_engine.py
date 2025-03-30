@@ -33,22 +33,59 @@ def log_decisions_to_json(decisions, filename):
     with open(filepath, "w") as file:
         json.dump(existing_data, file, indent=4)
 
-# Function to process scan results and log open ports
+# Function to process scan results and make port-specific decisions
 def make_decisions(scan_results):
     decisions = []
     for result in scan_results:
         host = result["host"]
         port = result["port"]
         status = result["status"]
+        service = result["service"]
         
-        # Log only open ports
+        # Decision logic based on ports
         if status == "open":
-            decisions.append({
-                "host": host,
-                "port": port,
-                "action": "log_open_port",
-                "reason": f"Port {port} is open"
-            })
+            if port == 80:  # HTTP
+                decisions.append({
+                    "host": host,
+                    "port": port,
+                    "action": "probe_http",
+                    "reason": f"HTTP detected on port {port}. Potential for web-based vulnerability testing."
+                })
+            elif port == 22:  # SSH
+                decisions.append({
+                    "host": host,
+                    "port": port,
+                    "action": "check_ssh_security",
+                    "reason": f"SSH detected on port {port}. Consider checking authentication methods."
+                })
+            elif port == 443:  # HTTPS
+                decisions.append({
+                    "host": host,
+                    "port": port,
+                    "action": "probe_https",
+                    "reason": f"Secure HTTPS service detected on port {port}. Verify SSL/TLS configurations."
+                })
+            elif port == 21:  # FTP
+                decisions.append({
+                    "host": host,
+                    "port": port,
+                    "action": "probe_ftp",
+                    "reason": f"FTP detected on port {port}. Investigate file transfer vulnerabilities."
+                })
+            elif port == 25:  # SMTP
+                decisions.append({
+                    "host": host,
+                    "port": port,
+                    "action": "probe_smtp",
+                    "reason": f"SMTP detected on port {port}. Evaluate mail server security."
+                })
+            else:
+                decisions.append({
+                    "host": host,
+                    "port": port,
+                    "action": "log_unknown_port",
+                    "reason": f"Open port {port} detected with service '{service}'. Requires further analysis."
+                })
     return decisions
 
 # Main execution block
