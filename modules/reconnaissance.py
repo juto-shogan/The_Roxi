@@ -5,9 +5,10 @@ import os
 from datetime import datetime
 from time import time
 
-# Function to ensure the dataGathered folder exists
+# Function to ensure the logs/scanData folder exists
 def ensure_data_folder_exists():
-    folder_name = "dataGathered"
+    folder_name = "logs/scanData"
+    # Check if the folder exists, if not, create it
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
     return folder_name
@@ -15,23 +16,23 @@ def ensure_data_folder_exists():
 # Function to log results into a JSON file
 def log_results_to_json(results, filename):
     filepath = os.path.join(ensure_data_folder_exists(), filename)
-    
+
     # If the file doesn't exist, create it
     if not os.path.exists(filepath):
         with open(filepath, "w") as file:
             json.dump([], file)
-    
+
     # Read existing data and append new results
     with open(filepath, "r") as file:
         existing_data = json.load(file)
-    
+
     # Add a timestamp to the results
     results_with_timestamp = {
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "data": results
     }
     existing_data.append(results_with_timestamp)
-    
+
     # Write updated data back to the file
     with open(filepath, "w") as file:
         json.dump(existing_data, file, indent=4)
@@ -60,7 +61,7 @@ def scan_network(ip_range, port_range):
                 start_time = time()  # Record the start time
                 result = s.connect_ex((str(ip), port))
                 end_time = time()  # Record the end time
-                
+
                 latency = round((end_time - start_time) * 1000, 2)  # Calculate latency in ms
                 protocol = "TCP"  # Currently, this is hardcoded for simplicity
 
@@ -91,10 +92,10 @@ if __name__ == "__main__":
     # Define the IP range and port range
     ip_range = "192.168.1.0/28"
     port_range = (20, 25)
-    
+
     # Perform the scan
     results = scan_network(ip_range, port_range)
-    
+
     # Save the results to a JSON file
     log_results_to_json(results, "scan_results.json")
-    print("Scan completed and results saved to dataGathered/scan_results.json")
+    print("Scan completed and results saved to logs/scanData/scan_results.json")

@@ -2317,5 +2317,778 @@
                 "status": "closed"
             }
         ]
+    },
+    {
+        "timestamp": "2025-03-30 19:30:12",
+        "data": [
+            {
+                "host": "192.168.1.0",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 496.4,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.0",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 511.34,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.0",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 516.65,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.0",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 515.5,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.0",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 505.43,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.0",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 510.5,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.1",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 512.69,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.1",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 507.35,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.1",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 511.59,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.1",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 513.34,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.1",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.44,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.1",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "452 syntax error (connecting)",
+                "latency_ms": 399.1,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.2",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 506.49,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.2",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 502.44,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.2",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 506.67,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.2",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 507.71,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.2",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.7,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.2",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "Unknown Service",
+                "latency_ms": 380.74,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.3",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 504.21,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.3",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 509.88,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.3",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 513.91,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.3",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.08,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.3",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 506.01,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.3",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "452 syntax error (connecting)",
+                "latency_ms": 500.14,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.4",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 514.14,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.4",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 501.54,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.4",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 506.84,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.4",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 514.43,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.4",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 504.72,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.4",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "452 syntax error (connecting)",
+                "latency_ms": 445.69,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.5",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 505.23,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.5",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 509.83,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.5",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.2,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.5",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 514.33,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.5",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.63,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.5",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "452 syntax error (connecting)",
+                "latency_ms": 499.79,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.6",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 502.0,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.6",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 507.74,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.6",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.14,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.6",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 506.39,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.6",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 502.92,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.6",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 504.53,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.7",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.58,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.7",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 510.68,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.7",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 502.38,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.7",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 501.24,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.7",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 501.3,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.7",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "Unknown Service",
+                "latency_ms": 421.3,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.8",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 509.14,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.8",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 509.87,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.8",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 504.97,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.8",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 505.22,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.8",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 501.48,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.8",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 516.1,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.9",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 511.42,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.9",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 502.21,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.9",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 513.7,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.9",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 501.09,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.9",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 501.87,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.9",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 509.9,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.10",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 504.12,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.10",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.98,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.10",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 507.83,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.10",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 506.72,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.10",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.98,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.10",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "452 syntax error (connecting)",
+                "latency_ms": 320.38,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.11",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 503.75,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.11",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 504.81,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.11",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 507.75,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.11",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 513.71,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.11",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 510.28,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.11",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "452 syntax error (connecting)",
+                "latency_ms": 293.95,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.12",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.12,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.12",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 514.14,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.12",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.69,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.12",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 509.21,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.12",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 505.38,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.12",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "452 syntax error (connecting)",
+                "latency_ms": 472.66,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.13",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 503.05,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.13",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 506.99,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.13",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 509.04,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.13",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 513.55,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.13",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 507.45,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.13",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "Unknown Service",
+                "latency_ms": 314.09,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.14",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 513.86,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.14",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 501.93,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.14",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 513.81,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.14",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 514.14,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.14",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 515.13,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.14",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "Unknown Service",
+                "latency_ms": 430.54,
+                "status": "open"
+            },
+            {
+                "host": "192.168.1.15",
+                "port": 20,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 512.66,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.15",
+                "port": 21,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 500.2,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.15",
+                "port": 22,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 504.27,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.15",
+                "port": 23,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 510.82,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.15",
+                "port": 24,
+                "protocol": "TCP",
+                "service": "Unknown",
+                "latency_ms": 501.69,
+                "status": "closed"
+            },
+            {
+                "host": "192.168.1.15",
+                "port": 25,
+                "protocol": "TCP",
+                "service": "Unknown Service",
+                "latency_ms": 258.93,
+                "status": "open"
+            }
+        ]
     }
 ]
