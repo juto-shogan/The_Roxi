@@ -1,6 +1,7 @@
 import json
+import sqlite3
 import matplotlib.pyplot as plt
-import seaborn as sns
+import os
 
 # Load delivery data from log file
 def load_delivery_data(delivery_log_file):
@@ -26,8 +27,12 @@ def load_decisions_data(decisions_log_file):
         print(f"Error: JSON decoding failed for {decisions_log_file}. Check the file format.")
         return []
 
-# Generate bar graph for delivery success rates
+# Visualize delivery success rates
 def visualize_delivery_rates(delivery_data):
+    if not delivery_data:
+        print("No delivery data available for visualization.")
+        return
+
     service_stats = {}
     for entry in delivery_data:
         for result in entry["results"]:
@@ -51,12 +56,16 @@ def visualize_delivery_rates(delivery_data):
     plt.xlabel("Service")
     plt.ylabel("Number of Deliveries")
     plt.title("Delivery Success vs Failure Rates by Service")
-    plt.legend()
+    plt.legend(loc="upper right")
     plt.tight_layout()
     plt.show()
 
-# Generate pie chart for decision priority distribution
+# Visualize decision priority distribution
 def visualize_decision_priorities(decision_data):
+    if not decision_data:
+        print("No decision data available for visualization.")
+        return
+
     priority_counts = {"high": 0, "low": 0}
     for decision in decision_data:
         priority = decision.get("priority", "low")
@@ -71,21 +80,59 @@ def visualize_decision_priorities(decision_data):
     plt.tight_layout()
     plt.show()
 
-# Entry point for visualization
+# Visualize CVE trends
+def visualize_cve_trends(connection):
+    try:
+        cursor = connection.cursor()
+        cursor.execute("""
+        SELECT COUNT(*) AS total_cves, strftime('%Y', published_date) AS year
+        FROM cve_data
+        GROUP BY year
+        """)
+        cve_trends = cursor.fetchall()
+
+        if not cve_trends:
+            print("No CVE data available for visualization.")
+            return
+
+        years = [trend[1] for trend in cve_trends]
+        totals = [trend[0] for trend in cve_trends]
+
+        plt.figure(figsize=(10, 6))
+        plt.bar(years, totals, color="skyblue")
+        plt.xlabel("Year")
+        plt.ylabel("Total CVEs Published")
+        plt.title("CVE Trends Over Time")
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.show()
+    except sqlite3.Error as e:
+        print(f"Database error: {e}")
+
+# Entry point for analytics
 if __name__ == "__main__":
-    delivery_log_file = "logs/deliveryLogs/delivery_log.json"
-    decisions_log_file = "logs/engineData/refined_decision_log.json"
+    delivery_log_file = os.path.join("logs", "deliveryLogs", "delivery_log.json")
+    decisions_log_file = os.path.join("logs", "engineData", "refined_decision_log.json")
+    db_file = "roxi_cve_database.db"
+
+    # Ensure directories exist
+    os.makedirs(os.path.dirname(delivery_log_file), exist_ok=True)
+    os.makedirs(os.path.dirname(decisions_log_file), exist_ok=True)
 
     # Load data
     delivery_data = load_delivery_data(delivery_log_file)
     decision_data = load_decisions_data(decisions_log_file)
 
-    # Generate visualizations if data exists
+    # Generate visualizations
     if delivery_data:
         visualize_delivery_rates(delivery_data)
-    else:
-        print("Notice: No delivery data available for visualization.")
     if decision_data:
         visualize_decision_priorities(decision_data)
-    else:
-        print("Notice: No refined decisions available for visualization.")
+    try:
+        connection = sqlite3.connect(db_file)
+        visualize_cve_trends(connection)
+        connection.close()
+    except sqlite3.Error as e:
+        print(f"Failed to connect to the database: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")

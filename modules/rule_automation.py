@@ -1,4 +1,6 @@
 import json
+import os
+import sqlite3
 
 # Load existing rules
 def load_rules(rules_file):
@@ -45,7 +47,8 @@ def update_rules(rules, rule_stats):
     updated_rules = []
     for rule in rules:
         stats = rule_stats.get(rule["id"], {"success": 0, "failure": 0})
-        success_rate = stats["success"] / (stats["success"] + stats["failure"]) if (stats["success"] + stats["failure"]) > 0 else 0
+        total_attempts = stats["success"] + stats["failure"]
+        success_rate = stats["success"] / total_attempts if total_attempts > 0 else 0
 
         # Adjust priority based on success rate
         if success_rate > 0.7:
@@ -55,12 +58,10 @@ def update_rules(rules, rule_stats):
         else:
             rule["priority"] = "medium"
 
-        # Example: Mark rule as inactive if it consistently fails
-        if stats["failure"] > stats["success"]:
-            rule["active"] = False
-        else:
-            rule["active"] = True
+        # Mark rule as inactive if it consistently fails
+        rule["active"] = stats["failure"] <= stats["success"]
 
+        print(f"Updated rule: {rule['id']} with priority: {rule['priority']}")
         updated_rules.append(rule)
     return updated_rules
 
@@ -76,10 +77,7 @@ def save_updated_rules(updated_rules, output_file):
 # Save an audit trail of rule changes
 def log_rule_changes(original_rules, updated_rules, audit_log_file):
     try:
-        changes = []
-        for old_rule, new_rule in zip(original_rules, updated_rules):
-            if old_rule != new_rule:
-                changes.append({"old": old_rule, "new": new_rule})
+        changes = [{"old": old_rule, "new": new_rule} for old_rule, new_rule in zip(original_rules, updated_rules) if old_rule != new_rule]
 
         with open(audit_log_file, "w") as file:
             json.dump({"rule_changes": changes}, file, indent=4)
@@ -87,23 +85,46 @@ def log_rule_changes(original_rules, updated_rules, audit_log_file):
     except Exception as e:
         print(f"Error: Failed to log rule changes. Reason: {e}")
 
+# Integrate CVE data into rule automation
+def update_rules_with_cve_data(rules, connection):
+    try:
+        cursor = connection.cursor()
+        updated_rules = []
+
+        for rule in rules:
+            cve_id = rule.get("cve_id")
+            if cve_id:
+                # Fetch CVE details
+                query = "SELECT description, problem_type FROM cve_data WHERE cve_id = ?"
+                cursor.execute(query, (cve_id,))
+                result = cursor.fetchone()
+
+                if result:
+                    description, problem_type = result
+                    if "critical" in description.lower() or "high" in problem_type.lower():
+                        rule["priority"] = "high"
+                    else:
+                        rule["priority"] = "medium"
+
+            updated_rules.append(rule)
+        return updated_rules
+    except sqlite3.Error as e:
+        print(f"Database error: {e}")
+        return rules  # Return original rules if there was an error
+
 # Entry point for rule automation
 if __name__ == "__main__":
-    rules_file = "rules.json"
-    delivery_log_file = "logs/deliveryLogs/delivery_log.json"
-    updated_rules_file = "logs/rulesData/updated_rules.json"
-    audit_log_file = "logs/rulesData/rule_audit_log.json"
+    rules_file = os.path.join("rules.json")
+    delivery_log_file = os.path.join("logs", "deliveryLogs", "delivery_log.json")
+    updated_rules_file = os.path.join("logs", "rulesData", "updated_rules.json")
+    audit_log_file = os.path.join("logs", "rulesData", "rule_audit_log.json")
 
-    # Load rules and delivery results
     rules = load_rules(rules_file)
     delivery_results = load_delivery_results(delivery_log_file)
 
-    # Analyze performance and update rules
     if rules and delivery_results:
         rule_stats = analyze_rule_performance(rules, delivery_results)
         updated_rules = update_rules(rules, rule_stats)
-
-        # Save updated rules and log changes
         save_updated_rules(updated_rules, updated_rules_file)
         log_rule_changes(rules, updated_rules, audit_log_file)
     else:
