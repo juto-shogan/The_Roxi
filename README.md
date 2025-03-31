@@ -1,4 +1,3 @@
-
 Absolutely, Somto! Here's the **`README.md`** file summarizing everything we’ve built for Roxi so far.
 
 ---
@@ -165,7 +164,131 @@ The_Roxi/
 
 ---
 
-Feel free to refine or expand this documentation further. Let me know how it looks or if there’s anything to tweak! 🚀
+
+Certainly, Somto! Here's an update to the `README.md` file that reflects where the project stands, highlighting all the milestones we've achieved and the current state of Roxi:
+
+---
+
+### **README.md**
+
+# **Roxi Project**
+
+Roxi is an evolving intelligent system designed to analyze, process, and dynamically adapt to data-driven scenarios. This document tracks the development progress and outlines the current state of the project.
+
+---
+
+## **Project Overview**
+
+Roxi is being developed to:
+
+- Simulate workflows across services for reconnaissance, weaponization, and persistence.
+- Dynamically adapt rules and tasks based on performance and feedback.
+- Integrate with large-scale data like CVE records to enhance decision-making and execution.
+
+The system is modular and scalable, designed for efficient data handling and complex coordination across multiple stages.
+
+---
+
+## **Current Progress**
+
+### **1. Weaponization Module**
+
+- **Functionality**: Generates payloads based on detected services and prepares tasks for execution.
+- **Capabilities**:
+  - Mock payload generation for HTTP, FTP, and SMTP services.
+  - Saves weaponized tasks for further execution.
+  - Provides a framework for dynamic payload creation, enabling future integration with vulnerability databases.
+
+### **2. Feedback Refinement Module**
+
+- **Functionality**: Refines decision-making based on delivery performance metrics.
+- **Capabilities**:
+  - Analyzes delivery logs to identify success and failure patterns.
+  - Updates decision priorities dynamically based on historical success rates.
+  - Outputs refined decision logs for Roxi’s next operations.
+
+### **3. Visualization Module**
+
+- **Functionality**: Provides insights into Roxi’s performance and decisions through visualizations.
+- **Capabilities**:
+  - Visualizes delivery success vs. failure rates.
+  - Displays decision priority distributions using bar charts and pie charts.
+
+### **4. Multi-Service Coordination Module**
+
+- **Functionality**: Orchestrates workflows across multiple services.
+- **Capabilities**:
+  - Tracks dependencies between tasks (e.g., FTP credential retrieval for HTTP tasks).
+  - Updates tasks dynamically based on upstream results.
+
+### **5. Error and Recovery Module**
+
+- **Functionality**: Handles task failures gracefully.
+- **Capabilities**:
+  - Implements retry mechanisms with adjusted parameters (e.g., alternate ports or payloads).
+  - Saves retry outcomes for analysis and follow-up.
+
+### **6. Simulated Persistence Module**
+
+- **Functionality**: Simulates behaviors to maintain access and monitor changes in services.
+- **Capabilities**:
+  - Periodically scans previously targeted hosts for changes (new services, closed ports).
+  - Flags critical updates for follow-up tasks.
+
+### **7. CVE Data Integration (In Progress)**
+
+- **Functionality**: Parses and processes CVE records for integration into Roxi’s decision-making.
+- **Current Status**:
+  - A script has been implemented to process over 150,000 CVE JSON files.
+  - Extracts relevant fields (e.g., `cveId`, `description`, `problem type`, `affected products`).
+  - Stores the data in an SQLite database with structured tables.
+  - Progress is being tracked, with data processing currently underway.
+
+---
+
+## **Upcoming Tasks**
+
+1. **CVE Data Utilization**:
+
+   - Develop workflows to leverage CVE data for dynamic payload creation.
+   - Integrate vulnerability-specific insights into Roxi’s weaponization module.
+2. **Database Queries and Analysis**:
+
+   - Implement scripts and tools to query and analyze CVE data for insights.
+   - Integrate advanced reporting and analytics for Roxi’s decision-making.
+3. **Advanced Feedback and Rule Automation**:
+
+   - Expand rule automation with evolving patterns from CVE data and live feedback loops.
+
+---
+
+## **How to Run the Project**
+
+1. **Database Initialization**:
+
+   - Run the `setup_cve_database.py` script to create database tables and process CVE JSON files.
+
+   ```bash
+   python modules/database/setup_cve_database.py
+   ```
+2. **Modules**:
+
+   - Weaponization: `weaponization.py`
+   - Feedback Refinement: `feedback_refinement.py`
+   - Multi-Service Coordination: `multi_service_coordination.py`
+   - Error and Recovery: `error_recovery.py`
+   - Simulated Persistence: `simulated_persistence.py`
+   - Visualization: `visualization.py`
+3. **Data Visualization**:
+
+   - Use the `visualization.py` script to generate graphs and insights from logs.
+4. **Database Inspection**:
+
+   - Use SQLite or DB Browser for SQLite to explore the database (`roxi_cve_database.db`).
+
+---
+
+Let me know if this captures everything you wanted or if you'd like any tweaks to the README! 🚀
 
 ```
 
