@@ -1,7 +1,3 @@
-Absolutely, Somto! Here's the **`README.md`** file summarizing everything we’ve built for Roxi so far.
-
----
-
 ### **README.md**
 
 ```markdown
@@ -285,7 +281,3 @@ The system is modular and scalable, designed for efficient data handling and com
 4. **Database Inspection**:
 
    - Use SQLite or DB Browser for SQLite to explore the database (`roxi_cve_database.db`).
-
----
-
-Let me know if this captures everything you wanted or if you'd like any tweaks to the README! 
