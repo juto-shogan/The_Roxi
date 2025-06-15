@@ -288,8 +288,4 @@ The system is modular and scalable, designed for efficient data handling and com
 
 ---
 
-Let me know if this captures everything you wanted or if you'd like any tweaks to the README! 🚀
-
-```
-
-```
+Let me know if this captures everything you wanted or if you'd like any tweaks to the README! 
