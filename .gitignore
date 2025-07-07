@@ -1,4 +1,14 @@
+# ide folder
+.idea
+.vscode
+
+# database files
 roxi_cve_database.db
+.DS_store
+
+
+# folders 
 AIREADME.md
 roxi_cve_database.db-journal
 error_log.txt
+__pycache__
