@@ -1,2 +1,12 @@
 requests
 watchdog
+certifi==2025.6.15
+charset-normalizer==3.4.2
+idna==3.10
+keyboard==0.13.5
+psutil==7.0.0
+PyGetWindow==0.0.9
+PyRect==0.2.0
+requests==2.32.4
+urllib3==2.5.0
+watchdog==6.0.0
