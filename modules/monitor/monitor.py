@@ -13,5 +13,5 @@ def monitor_logs(log_file):
                 print(line.strip())
 
 if __name__ == "__main__":
-    log_file = "C:/Users/somto/OneDrive/Desktop/The_Roxi/logs/deliveryLogs/delivery_log.json"
+    log_file = r"/deliveryLogs/delivery_log.json"
     monitor_logs(log_file)
